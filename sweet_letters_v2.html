@@ -1,0 +1,331 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Mitr:wght@300;400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --text:#3d2c3e;--text-soft:#7a6080;--text-hint:#b39dba;
+  --bg:#fdf8ff;--card-bg:#fff;--border:#eee0f5;
+}
+body{background:var(--bg);font-family:'Sarabun',sans-serif;color:var(--text);min-height:100vh}
+h2.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* ===== WARNING BANNER ===== */
+.warning-banner{
+  background:linear-gradient(135deg,#fff0f6,#f0e8ff,#e8f4ff);
+  border-bottom:2px dashed #e0c8f0;
+  padding:18px 20px 14px;text-align:center;position:relative;overflow:hidden;
+}
+.warning-banner::before{
+  content:'✨';position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:22px;
+}
+.warning-banner::after{
+  content:'✨';position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:22px;
+}
+.warn-title{
+  font-family:'Mitr',sans-serif;font-size:20px;font-weight:500;
+  color:#8b40a0;letter-spacing:.02em;line-height:1.4;margin-bottom:4px;
+}
+.warn-sub{font-size:12px;color:#a060b8;font-family:'Sarabun',sans-serif}
+
+/* peek character */
+.peek-char{
+  display:inline-block;font-size:32px;
+  animation:peek 2.5s ease-in-out infinite;
+  margin-bottom:2px;cursor:default;
+}
+@keyframes peek{
+  0%,100%{transform:translateY(0) rotate(-5deg)}
+  30%{transform:translateY(-6px) rotate(5deg)}
+  60%{transform:translateY(-3px) rotate(-3deg)}
+}
+.eyes{font-size:14px;animation:blink 3s ease-in-out infinite}
+@keyframes blink{0%,90%,100%{opacity:1}95%{opacity:0}}
+
+/* ===== HOME PAGE ===== */
+.home-header{text-align:center;padding:20px 20px 12px}
+.home-title{font-family:'Mitr',sans-serif;font-size:19px;font-weight:500;color:var(--text);letter-spacing:.02em}
+.home-sub{font-size:12px;color:var(--text-soft);margin-top:4px}
+.heart-deco{font-size:16px;letter-spacing:4px;margin:6px 0 0;opacity:.7}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;padding:12px 16px 32px}
+.name-card{
+  background:var(--card-bg);border:1.5px solid var(--border);
+  border-radius:18px;padding:16px 10px 14px;
+  display:flex;flex-direction:column;align-items:center;gap:7px;
+  cursor:pointer;transition:transform .18s,box-shadow .18s;
+  text-align:center;position:relative;overflow:hidden;
+  font-family:'Mitr',sans-serif;
+}
+.name-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:18px 18px 0 0}
+.name-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(180,140,200,.18)}
+.name-card:active{transform:scale(.97)}
+.avatar{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:500;flex-shrink:0;font-family:'Mitr',sans-serif}
+.name-label{font-size:14px;font-weight:500;color:var(--text)}
+.name-tag{font-size:10px;color:var(--text-hint);font-family:'Sarabun',sans-serif;line-height:1.3}
+
+.c0{border-color:#f7c5d8}.c0::before{background:linear-gradient(90deg,#f7a8c4,#f9c4d8)}.c0 .avatar{background:#fff0f6;color:#c2607a}
+.c1{border-color:#d5c8f7}.c1::before{background:linear-gradient(90deg,#c9b8f0,#ddd0ff)}.c1 .avatar{background:#f4f0ff;color:#7c5ec0}
+.c2{border-color:#b2e4d0}.c2::before{background:linear-gradient(90deg,#a8dfc9,#c4eed8)}.c2 .avatar{background:#edfaf4;color:#3d9970}
+.c3{border-color:#f9dfaa}.c3::before{background:linear-gradient(90deg,#f9dfa0,#fce8b8)}.c3 .avatar{background:#fffbee;color:#b07a20}
+.c4{border-color:#f9c8b0}.c4::before{background:linear-gradient(90deg,#f9c4a0,#fdd4b8)}.c4 .avatar{background:#fff5ee;color:#b05a20}
+.c5{border-color:#b4d8f8}.c5::before{background:linear-gradient(90deg,#a8cbf0,#c4dcf8)}.c5 .avatar{background:#eef6ff;color:#2c6ea8}
+.c6{border-color:#f7c5d8}.c6::before{background:linear-gradient(90deg,#f9b8d0,#f7c5d8)}.c6 .avatar{background:#fff0f6;color:#b04070}
+.c7{border-color:#c8eed0}.c7::before{background:linear-gradient(90deg,#b4e4c0,#c8eed0)}.c7 .avatar{background:#edfaf4;color:#2d7040}
+
+/* ===== LETTER PAGE ===== */
+.letter-page{display:none;padding:0 0 40px}
+.letter-back{
+  display:flex;align-items:center;gap:8px;padding:12px 16px;
+  border-bottom:1px solid var(--border);cursor:pointer;
+  font-size:13px;color:var(--text-soft);font-family:'Mitr',sans-serif;
+  transition:color .15s;background:var(--card-bg)
+}
+.letter-back:hover{color:var(--text)}
+.letter-hero{margin:16px 16px 0;border-radius:18px;padding:24px 20px 20px;position:relative;overflow:hidden}
+.letter-hero-name{font-family:'Mitr',sans-serif;font-size:24px;font-weight:500;margin-bottom:3px}
+.letter-hero-tag{font-size:12px;opacity:.75;font-family:'Sarabun',sans-serif}
+.letter-hero-avatar{
+  position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(255,255,255,.45);
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;font-family:'Mitr',sans-serif;font-weight:500;
+}
+.letter-body{
+  margin:14px 16px 0;background:var(--card-bg);
+  border:1.5px solid var(--border);border-radius:18px;
+  padding:24px 22px;font-size:15px;line-height:2;
+  color:var(--text);font-family:'Sarabun',sans-serif;font-weight:300;white-space:pre-line;
+}
+
+/* ===== LUCKY COLOR ===== */
+.lucky-section{
+  margin:14px 16px 0;background:var(--card-bg);
+  border:1.5px solid var(--border);border-radius:18px;padding:18px 20px;
+}
+.lucky-title{font-family:'Mitr',sans-serif;font-size:14px;font-weight:500;color:var(--text-soft);margin-bottom:12px;text-align:center}
+.lucky-display{
+  display:flex;align-items:center;gap:14px;
+  background:#fdf8ff;border-radius:14px;border:1px solid var(--border);
+  padding:14px 18px;margin-bottom:12px;
+}
+.lucky-swatch{
+  width:56px;height:56px;border-radius:14px;flex-shrink:0;
+  transition:all .4s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+.lucky-info{flex:1}
+.lucky-color-name{font-family:'Mitr',sans-serif;font-size:17px;font-weight:500;margin-bottom:2px;transition:color .3s}
+.lucky-color-th{font-size:12px;color:var(--text-soft);margin-bottom:4px}
+.lucky-meaning{font-size:12px;color:var(--text-soft);line-height:1.5}
+.lucky-hex{font-size:11px;color:var(--text-hint);font-family:monospace;margin-top:4px}
+.spin-btn{
+  width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--border);
+  background:linear-gradient(135deg,#fff0f6,#f4f0ff);
+  font-family:'Mitr',sans-serif;font-size:14px;font-weight:500;
+  color:#8b40a0;cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.spin-btn:hover{transform:scale(1.02);box-shadow:0 4px 12px rgba(139,64,160,.15)}
+.spin-btn:active{transform:scale(.98)}
+.spin-emoji{display:inline-block;transition:transform .4s}
+.spin-btn.spinning .spin-emoji{animation:spin360 .5s ease-out}
+@keyframes spin360{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.lucky-footer{text-align:center;margin:8px 16px 0;font-size:11px;color:var(--text-hint);font-family:'Sarabun',sans-serif}
+
+.letter-footer{margin:10px 16px 0;text-align:center;font-size:11px;color:var(--text-hint);font-family:'Sarabun',sans-serif}
+</style>
+
+<h2 class="sr-only">💌 จดหมายจากพี่มิ้น — กดชื่อเพื่ออ่านข้อความส่วนตัว</h2>
+<div id="app">
+
+<!-- WARNING BANNER -->
+<div class="warning-banner">
+  <div class="peek-char">🙈</div>
+  <div class="warn-title">อย่าแอบอ่านของคนอื่นนะจ๊ะ</div>
+  <div class="warn-sub">มีตัวการ์ตูนแอบมองเธออยู่นะจ๊ะ <span class="eyes">👀</span></div>
+</div>
+
+<!-- HOME -->
+<div id="homePage">
+  <div class="home-header">
+    <div class="home-title">💌 จดหมายจากพี่มิ้น</div>
+    <div class="home-sub">กดชื่อเพื่ออ่านข้อความของตัวเอง</div>
+    <div class="heart-deco">♡ ♡ ♡</div>
+  </div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<!-- LETTER -->
+<div class="letter-page" id="letterPage">
+  <div class="letter-back" onclick="goHome()">
+    <i class="ti ti-arrow-left" style="font-size:15px" aria-hidden="true"></i> กลับหน้าหลัก
+  </div>
+  <div class="letter-hero" id="letterHero">
+    <div>
+      <div class="letter-hero-name" id="heroName"></div>
+      <div class="letter-hero-tag" id="heroTag"></div>
+    </div>
+    <div class="letter-hero-avatar" id="heroAvatar"></div>
+  </div>
+  <div class="letter-body" id="letterBody"></div>
+
+  <!-- Lucky Color -->
+  <div class="lucky-section">
+    <div class="lucky-title">🎨 สีนำโชคประจำวันของฉัน</div>
+    <div class="lucky-display">
+      <div class="lucky-swatch" id="luckySwatch"></div>
+      <div class="lucky-info">
+        <div class="lucky-color-name" id="luckyName">กด "สุ่มสี" เลย!</div>
+        <div class="lucky-color-th" id="luckyTh"></div>
+        <div class="lucky-meaning" id="luckyMeaning">✨ กดปุ่มด้านล่างเพื่อดูสีนำโชคของวันนี้</div>
+        <div class="lucky-hex" id="luckyHex"></div>
+      </div>
+    </div>
+    <button class="spin-btn" id="spinBtn" onclick="spinColor()">
+      <span class="spin-emoji">🎲</span> สุ่มสีนำโชค!
+    </button>
+  </div>
+
+  <div class="letter-footer">✨ ส่งด้วยความรักจากพี่มิ้น ✨</div>
+</div>
+
+</div>
+
+<script>
+const people = [
+  {name:"หมูหวาน",tag:"น้องรักของพี่มิ้น",letter:`ไฮๆหมูหวาน น้องรักคนดีของพี่มิ้น ขอบคุณตลอด 3 เดือนที่ผ่านมาน้า ถึงจะเป็นแค่เวลาสั้นๆ แต่พี่โคตรมีความสุขที่ได้ใช้เวลากับหมูหวาน\n\nหมูหวานเป็นที่รักของทุกคน ยิ้มเก่ง ชอบทำให้คนอื่นหัวเราะ แถมยังเก่งโคตรๆเลยด้วย\n\nแต่พี่อยากฝากบอกให้หมูหวานดูแลตัวเองด้วยนะ อย่าดูแลคนอื่นจนลืมตัวเอง หมูหวานเป็นคนที่ใส่ใจคนอื่นเก่งมากๆ แต่ชอบลืมตัวเองบ่อยๆ\n\nในอนาคตพี่อยากเห็นหมูหวานมีความสุขแบบนี้ รักตัวเองมากขึ้น และเป็นที่รักของทุกคนแบบนี้ตลอดนะ\n\nพี่ภูมิใจในตัวหมูหวานมาก ขอบคุณที่มาเจอพี่นะ หวังว่าในอนาคตเราจะได้มานัดกินข้าวด้วยกันอีกน้า 🍜`},
+  {name:"เตอร์",tag:"ลูกรักของแม่",letter:`เตอร์ลูกรักของแม่ สำหรับลูกชายแล้วแม่ไม่ค่อยห่วงอะไรเท่าไหร่หรอก เพราะลูกชายแม่ก็ทำได้ดีมาตลอด\n\nขอบคุณสำหรับช่วงเวลาที่อยู่ด้วยกันนะ ขอบคุณที่ดูแลแม่ดีมากๆ ถึงแม่จะงอแงเอาแต่ใจ แต่เตอร์ก็ไม่เคยบ่นหรือโกรธเลย\n\nแม่อยากบอกว่าขอให้ทางข้างหน้าของเตอร์มีแต่ความสุขและสมหวัง ตอนมีความสุขไม่ต้องคิดถึงแม่ก็ได้ แต่ถ้าทุกข์ใจ ทักหาแม่ได้เสมอน้า\n\nพี่อยู่ข้างเตอร์เสมอ หวังว่าในอนาคตเราจะเจอกันสักที่ที่อุบล ไว้ไปกินเลี้ยงกันน้า 🍖`},
+  {name:"วา",tag:"น้องรักของพี่",letter:`ไอ้วาน้องรักของพี่ เอ็งคือความสุขของพี่\n\nพี่ชอบที่วาเป็นตัวเองและไม่ยอมกับอะไรที่ตัวเองไม่อยากทำหรือไม่ถนัด แบบนับถือเลย\n\nจริงๆ วาเป็นคนที่น่ารักมาก แบบถึงจะตีกับพี่แต่บางครั้งก็เป็นห่วงสุดๆ อย่างเวลาเรียกแกร้ปวาจะชอบดูให้พี่ตลอดว่าถูกคันใหม่ พี่ดีใจมากๆ\n\nอยากให้วาเป็นตัวเองแบบนี้ต่อไป และอย่าไปตีกับใครไปทั่วนะ\n\nพี่ภูมิใจในตัววามาก เก่งมากที่จบจนได้ เบิ้บบูๆๆๆ ไว้มานัดกินข้าวกันน้า 🎉`},
+  {name:"ฟิล์ม",tag:"ลูกสาวสุดที่รัก",letter:`ลูกสาวสุดที่รักที่ตามใจแม่เสมอ ฟิมเป็นคนที่ใจดีมากๆ พี่ชอบบัตเตอร์ของฟิมจริงๆ ในอนาคตเดะพี่ไปซื้อพ่อฟิมนะ 5555\n\nพี่ดีใจที่ได้เจอฟิมน้า แม้จะช่วงเวลาสั้นๆ แต่พี่สนุกมากเลย แถมยังได้รู้จักบัตเตอร์ที่อร่อยที่สุดในชีวิตด้วย\n\nในอนาคตพี่หวังว่าฟิมจะสมหวังในเรื่องความรัก และเจอคนดีๆนะ ฟิมดีพอที่จะมีคนดีๆในชีวิต มั่นใจในตัวเองนะว่าเรามีคุณค่าสุดๆล่ะ\n\nหวังว่าฟิมจะมีความสุขมากๆน้า แล้วบอกพ่อฟิมมาทำบัตเตอร์ให้พี่กินด้วยน้า 5555 🧈`},
+  {name:"ต้า",tag:"ตาต้าของพี่ คนสวย",letter:`ตาต้าของพี่ ลูกของพี่ คนสวยของพี่\n\nต้าเป็นคนยิ้มเก่ง อ่อนโยนสุดๆ เทคแคร์เก่งมาก ทำงานก็เก่ง พี่ภูมิใจในตัวต้าของพี่มาก\n\nต้าอย่าลืมภูมิใจในตัวเองที่ผ่านพี่บอยมาได้ด้วยน้า พี่ดีใจที่ได้เจอต้า แบบช่วงสั้นๆ แต่พี่สนุกมากเลย\n\nขอบคุณที่คอยเรียกรถให้พี่นะ พี่มีชีวิตรอดเพราะต้าเลย ขอบคุณน้า\n\nหวังว่าเราจะได้เจอกันอีกน้า 🚗✨`},
+  {name:"วี",tag:"เพื่อนคู่บ้าๆ",letter:`สวัสดีวี พี่เข้าโหมดซึ้งกับวีไม่ได้จริงๆ แต่พี่อยากบอกว่าขอบคุณนะ\n\nอยู่กับวีพี่หัวเราะจนจะเป็นจะตาย มีความสุขมาก ดีใจที่ได้เจอ ได้ไปร้องเกะ ไปเดินสวนด้วยกัน มีเพื่อนทำเรื่องบ้าๆด้วยกันมันก็อุ่นใจดี\n\nพี่อยากให้วีเป็นวีแบบนี้ต่อไปนะ เก่งมากๆ พี่ภูมิใจในตัววีสุดๆ วีเก่งมากๆ แบบทำได้ทุกอย่างจริงๆ\n\nขอให้วีมีความสุข กินเหล้าน้อยลงหน่อยก็ได้ โฟกัสที่ความสุขตัวเองให้เยอะ ขอให้มีชีวิตที่ดี หวังว่าจะได้มีโอกาสเจอวีอีกครั้งนะ 🎤`},
+  {name:"เค้ก",tag:"น้องรักของพี่เมี้ยน",letter:`เค้กน้องรักของพี่เมี้ยน พี่ไม่อยากทำให้เค้กร้องไห้เท่าไหร่ แต่ช่วยไม่ได้ก็พี่อยากบอกเค้กอ่ะ\n\nเค้กเป็นคนที่เก่งมากคนหนึ่ง เก่งมากๆเลยด้วย พี่ว่าเค้กรู้อยู่ล่ะเรื่องนี้ แต่อีกเรื่องที่เค้กอาจจะลืมไปก็คือ เค้กอย่าลืมขอบคุณแล้วก็ภูมิใจในตัวเองมากๆนะ\n\nเห็นป่ะว่ายากแค่ไหน เค้กก็ผ่านมาได้ พี่โคตรภูมิใจในตัวเค้ก\n\nต่อจากนี้พี่อยากให้เค้กเป็นเค้กแบบนี้แหละ ไม่ต้องเปลี่ยนเลย เป็นเค้กที่น่ารัก พูดเก่ง\n\nในอนาคตอาจจะมีเรื่องลำบากๆอีกเยอะ แต่พี่มั่นใจว่าเค้กจะผ่านมันไปได้แน่นอน ขอให้มีความสุขและภูมิใจในตัวเองมากๆนะ ดีใจที่ได้เจอเค้กน้า 🎂`},
+  {name:"นีนร์",tag:"น้องที่น่ารัก",letter:`นอ อี นอ นีน อีกสิ่งหนึ่งที่พี่เสียใจตลอดการฝึกงานคือพี่เรียกนีนผิดตลอดเลย พี่ขอโทษ T^T\n\nเราไม่ค่อยได้คุยกันเท่าไหร่ แต่นีนร์ก็เป็นน้องที่น่ารักคนหนึ่ง ขอบคุณสำหรับช่วงเวลาที่ผ่านมาน้า\n\nพี่มีความสุขมากๆ หวังว่านีนก็จะมีความสุขเหมือนกันน้า ขอให้มีอนาคตที่ดีและประสบความสำเร็จในชีวิตนะ 🌟`},
+  {name:"เอ็ม",tag:"คนที่อยู่กับกูนานที่สุด",letter:`ไอ้เอ็มคนที่อยู่กับกูนานที่สุด กูดีใจมากที่ได้รู้จักมึง ไม่งั้นกูคงไม่รอดจากการฝึกงานแน่ๆ\n\nขอบคุณที่อยู่ข้างกูตลอดนะ ถึงกูโทรไปกวนมึงก็รับ แถมสนับสนุนไก่อบโอ่งธุรกิจสตาร์อัพกูด้วย ขอบคุณมึงมากที่อยู่กับกูช่วยกูทุกอย่างเลย\n\nขอให้อนาคตของมึงสว่างไสว ชีวิตรักสุขสม การงานก็ขอให้ได้บอที่ดีกว่านี้ อย่างมึงอนาคตไกลอยู่แล้ว\n\nแล้วก็หวังว่าช่วงเวลาที่อยู่ด้วยกันมามึงจะสนุกนะ เพราะกูสนุกมากกก อีกอย่างมึงต้องภูมิใจในตัวเองเยอะๆนะ ขอให้ในอนาคตมึงมีความสุขและประสบความสำเร็จนะ 🔥`},
+  {name:"เอ๋ย",tag:"เพื่อนใหม่ไม่กี่วัน",letter:`เอ๋ยยย ถึงจะพึ่งเจอกันไม่กี่วัน แต่เป็นไม่กี่วันที่สนุกมากก\n\nถ้าออกได้ออกนะ แต่ถ้าออกไม่ได้ก็ขอให้สนุกกับน้องๆคนใหม่น้า\n\nมีอะไรก็ทักมาได้เสมอ จะบ่น จะระบาย จะให้ช่วยอะไรก็ทักมาได้เลยยย ดีใจที่ได้เจอน้า 😊`},
+  {name:"เขต",tag:"น้องยิ้มเยอะๆ",letter:`เขตที่รัก ถึงจะพึ่งเจอกันไม่นานแต่พี่รักเขตมาก ล้อเล่นน่า\n\nขอโทษนะถ้าบางทีพี่อาจจะติดเล่นไป ถ้าไม่โอเคก็บอกได้เลย\n\nจากที่คุยกันมา คิดว่าเขตเป็นคนน่ารักนะ แล้วก็ทำงานดีเลยล่ะ ถ้าจะไปที่อื่นก็รีบไปเลยนะ มีอะไรก็ทักมาบ่นมาระบายได้เลย\n\nที่ผ่านมาขอบคุณมาก พี่สนุกมากที่ได้ใช้เวลากับเขต ขอบคุณน้า ในอนาคตก็ขอให้มีความสุขแล้วก็ยิ้มเยอะๆน้า 😄`},
+  {name:"พัน",tag:"ลูกรักอินโทรเวิด",letter:`พันลูกรัก แม่รู้แกอินโทรเวิด อ่านเงียบๆไปแล้วกัน\n\nพี่ดีใจที่ได้เจอพันนะ แล้วก็ภูมิใจด้วย ยังเด็กอยู่เลย แต่ก็ได้มีประสบการณ์เยอะกว่าพี่แล้วมั้ง\n\nอย่าคิดว่าตัวเองไม่เก่งนะ จากวันแรกพันพัฒนาขึ้นมาก พี่ภูมิใจในตัวพันสุดๆ\n\nต่อจากนี้ไม่มีพี่เหยียบเท้าแล้วก็แย่หน่อยนะ ขอให้รักกับเทสนานๆ แล้วก็คุยกับคนอื่นบ้างนะ ขอให้อนาคตสดใสจ้า 🌈`},
+  {name:"เทส",tag:"เด็กขยันนักฝัน",letter:`ไอ้เทส มึงเป็นเด็กขยันอยากรู้อยากลอง บางเรื่องก็ดีนะ แต่บางเรื่องลดได้ก็ลดเถอะดีต่อร่างกายและชีวิต\n\nเส้นทางทำเพลงที่มึงฝันไว้อ่ะ พี่มั่นใจว่าเทสทำได้ อย่ายอมแพ้ล่ะ ทำเพลงออกมาให้ได้ สักเพลงก็ยังดี\n\nเทสมีความสามารถเยอะจะตาย ภูมิใจในตัวเทสนะเว้ย ดีใจมากที่ได้เจอ พี่สนุกมากที่ได้อยู่กะเทส\n\nขอให้ในอนาคตพี่ได้ฟังเพลงของเทสจากทุกที่ที่ไปนะเว้ย 🎵`},
+  {name:"ทีม",tag:"นักตัดต่อมือทอง",letter:`หวัดดีน้องทีมที่น่ารัก เราไม่ค่อยได้คุยกันเนอะ แต่พี่ดีใจที่ได้รู้จักทีมน้า\n\nทีมเป็นคนน่ารัก เป็นคนเก่ง ขอให้ตัดต่อเก่งขึ้นเรื่อยๆ\n\nอย่าไปยอมไอ้นั้นมากนะ มันสั่งแก้เยอะก็บอกให้มันไปทำเองเลย\n\nขอให้ช่วงเวลาที่ฝึกงานที่เหลือมีความสุขและสนุกๆน้า 🎬`},
+  {name:"เพลง",tag:"คนน่ารักยิ้มสวย",letter:`หวัดดีเพลงง เพลงคนน่ารักของพี่\n\nถึงจะไม่ค่อยได้พูดกัน แต่พี่อยากบอกว่าพี่สนุกมากในช่วงเวลาที่ได้อยู่กับเพลง เพลงเก่งมากนะ พี่ภูมิใจมาก\n\nขอให้ช่วงเวลาที่เหลือมีความสุข สนุกๆกับการฝึกงานน้า ในอนาคตก็ขอให้มีความสุข สดใส ยิ้มเยอะๆเช่นเดิมม 🎶`},
+  {name:"วุ้นเส้น",tag:"ผู้ช่วยชีวิตพัดลมจิ๋ว",letter:`วุ้นไม่มีคู่แข่งแล้วทำคะแนนเยอะๆนะ อ่ะ ล้อเล่นน\n\nด้วยความที่นั่งคนละโต๊ะกันเลยไม่ค่อยได้คุย แต่พี่รู้ว่าวุ้นน่ารักเพราะวุ้นชอบดูแลพี่\n\nขอบคุณพัดลมจิ๋วของวุ้นที่ทำให้พี่รอดตายทุกสถานการณ์ ตอนร้องเกะก็สนุกมาก\n\nวุ้นเก่งมาก เป็นเอ็มซีก็ได้ ทำทุกอย่างออกมาดีมาก ภูมิใจในตัววุ้นสุดๆ\n\nหวังว่าในอนาคตวุ้นจะเก่ง สวย รวย และมีแฟนชื่ออินทรีตามที่หวังนะ 🌬️`},
+  {name:"โย",tag:"น้องคนสวยเก่งเริ่ด",letter:`น้องโยคนเก่งของพี่ เก่งเกิ้น สวยเกิน เริ่ดเกิน เริ่ดๆเลยล่ะ\n\nพี่ขอให้น้องโยผ่านพ้นทุกสิ่งไปได้ โยเก่งอยู่แล้ว ไม่มีไรต้องกังวล\n\nแต่โยอย่าลืมภูมิใจในตัวเองและก็ขอบคุณตัวเองเยอะๆนะ รักตัวเองมากๆ\n\nมีไรก็ทักหาพี่ได้ตลอดเลยนะ บายๆๆ 💅`},
+  {name:"นั้ม",tag:"คนที่ทำพี่มีความสุข",letter:`นั่ม นั่ม นั๋ม นั้นแหละนัม พี่อยากจะบอกว่าพี่ดีใจมากที่ได้เจอนัม\n\nช่วงเวลาที่อยู่ด้วยกันพี่สนุกมาก นั้มเป็นอีกคนที่ทำให้พี่มีความสุขมาก\n\nพี่เองก็อยากให้นัมมีความสุขเยอะๆ สนุกๆกับช่วงเวลาที่เหลือน้า\n\nอย่าลืมขอบคุณแล้วก็ภูมิใจในตัวเองเยอะๆน้า 🌸`},
+  {name:"เฟิน",tag:"น้องคนสวย",letter:`น้องเฟินคนสวย ถึงเราจะไม่ค่อยได้คุยกัน แต่พี่อยากบอกว่าพี่ดีใจที่ได้เจอน้องเฟินน้า\n\nขอให้ฝึกงานที่เหลือสนุกแล้วก็ไม่มีเรื่องอะไรที่ทำให้ทุกข์ใจหรือเครียดจนเกินไปนะ\n\nสู้ๆน้า 💪`},
+  {name:"มิ้ว",tag:"น้องที่น่ารัก",letter:`น้องมิ้ว พี่ขอโทษที่พี่ลืมชื่อน้า พี่จะไม่ลืมอีกแล้ว\n\nเราไม่ค่อยได้คุยกันเท่าไหร่ แต่พี่ดีใจที่ได้เจอมิ้วนะ\n\nขอให้ชีวิตการทำงานที่เหลือราบรื่น ปลอดภัย และไม่มีอะไรมาทำให้ทุกข์ใจนะ\n\nสู้ๆน้า 🐱`},
+  {name:"พลอย",tag:"แม่พี่คนหนึ่ง",letter:`พลอยยย น้องรักของพี่ ดูแลพี่ตลอด เป็นแม่พี่คนหนึ่งได้\n\nขอบคุณน้าที่ดูแลพี่ตลอดฝึกงานที่ผ่านมา พลอยเป็นคนที่ดีมาก พี่สนุกมากที่ได้ใช้เวลากับพลอย\n\nพี่ดีใจมากที่พลอยชอบผัดผักบุ้งของพี่ และไปทุกๆที่กับพี่ พลอยเป็นคนเก่งแล้วก็ดีมากคนหนึ่ง พี่รักพลอย จุ้บๆ\n\nดีใจที่ได้เจอและขอให้ทุกๆวันต่อจากนี้ของพลอยราบรื่นและมีความสุขตลอดไปน้า ไว้พี่ทำผัดผักบุ้งให้กินใหม่ 🥬`},
+  {name:"อิ้ง",tag:"น้องที่น่ารักสบายใจ",letter:`หวัดดีอิ้ง พี่น่ะ ขอโทษที่ลืมไอจี พี่รู้สึกผิดมาก แต่พี่จะไม่ลืมแล้ว\n\nไม่ค่อยได้คุยกับอิ้งแต่พี่รู้สึกสบายใจตอนอยู่กับอิ้งนะ\n\nอิ้งเป็นคนน่ารัก คนเก่ง แล้วก็สู้เพื่อตัวเองมากๆ รักษาตรงนี้ไว้นะ\n\nพี่ดีใจที่ได้เจออิ้งและขอให้ทุกวันของอิ้งมีความสุขและก็ยิ้มเยอะๆทุกวันเลยน้า 🌺`},
+  {name:"เนย",tag:"นักกราฟิกสุดเก่ง",letter:`หวัดดีจ้าเนย เนยหายไปเลย แต่พี่อยากเขียนให้เนย\n\nพี่อยากบอกเนยว่างานที่เนยทำมันออกมาดีมาก แบบมากสุดๆ พี่โคตรตะลึง แบบเนยทำกราฟิกโคตรสวย เนยเก่งมาก พี่ภูมิใจมาก\n\nขอให้เนยทำตามที่ตัวเองเห็นว่าสวยต่อไปนะ พัฒนาฝีมือให้ดีขึ้นแล้วก็มั่นใจในฝีมือตัวเองไปเล้ยย\n\nพี่ดีใจที่ได้เจอเนยน้า หวังว่าการฝึกงานที่เหลือเนยจะมีความสุขมากๆน้า สู้ๆนะเนยยย 🎨`},
+  // ใหม่จากไฟล์ที่สอง
+  {name:"ทีเร้ก",tag:"ที่รักของพี่",letter:`ที่รักของพี่ พี่น่ะคิดถึงทีเร้กมากนะ เหงามากเลยไม่มีทีเร้กให้อ้อน\n\nพี่อยากจะบอกว่าพี่ดีใจที่ได้เจอทีเร้กน้า ถึงจะเป็นช่วงเวลาสั้นๆ แต่พี่แฮปปี้มาก ทีเร้กเป็นคนเก่งมาก\n\nพี่อยากให้ทีเร้กภูมิใจในตัวเองเยอะๆ แล้วก็ขอให้กิจการเสื้อผ้าทีเร้กปังๆน้า พี่สนับสนุนทุกการเติบโตของทีเร้ก\n\nดีใจที่ได้เจอน้า ขอให้อนาคตปังๆรวยๆเลยน้า จุ้บๆๆ 👗✨`},
+  {name:"เจ",tag:"น้องรักเก่งๆ",letter:`น้องเจที่ไม่ค่อยได้เจอกันเลย พี่ไม่ค่อยมีอะไรจะพูดเลยอ่า\n\nแต่พี่อยากบอกเจว่าเก่งมากๆแล้วน้า ในอนาคตขอให้เจเก่งๆขึ้น อย่าลืมที่จะมีความสุขแล้วก็ขอบคุณตัวเองด้วยนะ ที่ผ่านทุกอย่างมาได้\n\nแล้วเจอกันงับ สู้ๆน้า 💪`},
+  {name:"เจน",tag:"น้องที่เก่งมาก",letter:`น้องเจน คือพี่ไม่ค่อยได้คุยด้วย แต่อยากบอกว่าเราไม่จำเป็นต้องรู้สึกผิดอะไรเลยนะ\n\nเราเก่งมากแล้ว ทุกอย่างเราทำเต็มที่แล้ว และพี่กับเพื่อนๆก็เห็นมันมาตลอด\n\nอยากให้เจนยิ้มเยอะๆและภูมิใจในตัวเองเยอะๆด้วยนะ เก่งมากคับบบ บายๆน้า สู้ๆๆ 🌟`},
+  {name:"นุ่น",tag:"น้องร่าเริงสดใส",letter:`น้องนุ่น พี่ไม่ค่อยได้คุยกะนุ่น แต่นุ่นก็เก่งมากเลย แบบการทำงานอะไรต่างๆเก่งมากเลยน้า\n\nขอให้ในอนาคตสดใส แล้วก็ร่าเริงแบบนี้ตลอดไปเลยน้า\n\nบายๆสู้ๆเด้ออ 🌻`},
+  {name:"ใบเตย",tag:"น้องน่ารักทำงานเก่ง",letter:`น้องใบเตยที่พูดตรงๆว่าพี่คุยด้วยน้อยมาก แต่พี่จำเราได้นะ เราน่ารัก ทำงานเก่งด้วย\n\nพี่ขอให้ชีวิตของการฝึกงานราบรื่น รวมถึงชีวิตในอนาคตด้วย\n\nขอให้เรามีความสุขและมีรอยยิ้มในทุกๆวันน้า 🌿`},
+  {name:"คะนิ้ง",tag:"น้องใหม่น่ารัก",letter:`ด้วยความที่พึ่งมาทำให้เราได้คุยกันไม่เยอะมาก แบบแทบจะไม่ได้คุยเลยมั้ง\n\nแต่คะนิ้งก็น่ารักกับเรามาก ขอบคุณน้า\n\nขอให้ชีวิตของการฝึกงานราบรื่นและสนุกสนานน้า 🩷`},
+  {name:"ลูกปลา",tag:"น้องน่ารัก",letter:`ลูกปลาเราไม่ค่อยได้คุยกันเลย แต่ดีใจที่ได้เจอน้า\n\nขอให้ทุกวันของการฝึกงานสนุกสนานและราบรื่น มีความสุขน้า 🐟✨`},
+  {name:"ต้นตาล",tag:"น้องน่ารักปรึกษาได้",letter:`ต้นตาลคือพี่ก็พึ่งคุยไม่กี่ครั้งเนอะ แต่ต้นตาลก็น่ารักมาก\n\nมีอะไรก็ปรึกษาพี่ได้เลย อยากระบาย อยากบ่นได้หมด\n\nขอให้ชีวิตการฝึกงานต่อจากนี้ราบรื่นและมีความสุขน้า เราเก่งอยู่แล้วล่ะ ทำได้ 🌴`},
+  {name:"โอเบ",tag:"ไนซ์มากทำงานเก่ง",letter:`ชื่อโอเบเนอะ ไม่ใช่โกเบใช่ไหม ช่างเถอะ โอเบเป็นคนน่ารักนะ ไนซ์มาก ทำงานเก่งอีก\n\nก็ขอให้เรามีความสุขกับการฝึกงานน้า เราเก่งเราทำได้ ผ่านไปได้ดีแน่นอน เชื่อพี่ 💙`},
+  {name:"กะเพรา",tag:"น้องที่ดีใจได้เจอ",letter:`จริงๆพี่ไม่ค่อยได้คุยกะกะเพราเลยอ่ะ แต่อยากบอกว่าดีใจที่ได้เจอกะเพราน้า\n\nขอให้ชีวิตการฝึกงานต่อจากนี้ราบรื่น และเต็มไปด้วยความสนุกและความสุขน้า 🌿🍳`},
+];
+
+const colors=['c0','c1','c2','c3','c4','c5','c6','c7'];
+const avatarColors=[
+  {bg:'#fff0f6',color:'#c2607a'},{bg:'#f4f0ff',color:'#7c5ec0'},
+  {bg:'#edfaf4',color:'#3d9970'},{bg:'#fffbee',color:'#b07a20'},
+  {bg:'#fff5ee',color:'#b05a20'},{bg:'#eef6ff',color:'#2c6ea8'},
+  {bg:'#fff0f6',color:'#b04070'},{bg:'#edfaf4',color:'#2d7040'},
+];
+const heroBgs=[
+  'background:linear-gradient(135deg,#ffeef5,#ffd6e7)',
+  'background:linear-gradient(135deg,#f4f0ff,#e4d8ff)',
+  'background:linear-gradient(135deg,#edfaf4,#d0f5e6)',
+  'background:linear-gradient(135deg,#fffbee,#fff0c4)',
+  'background:linear-gradient(135deg,#fff5ee,#ffddc4)',
+  'background:linear-gradient(135deg,#eef6ff,#d4e8ff)',
+  'background:linear-gradient(135deg,#fff0f6,#ffc8dc)',
+  'background:linear-gradient(135deg,#edfaf4,#c4eed4)',
+];
+
+const luckyColors=[
+  {name:'Rose Quartz',th:'ชมพูควอตซ์',hex:'#F7CAC9',meaning:'เสริมดวงความรัก หัวใจอบอุ่น และสัมพันธ์ที่แน่นแฟ้น 💕'},
+  {name:'Lavender',th:'ลาเวนเดอร์',hex:'#B8B8D1',meaning:'เสริมความสงบ ใจเย็น และการตัดสินใจที่ชาญฉลาด 🔮'},
+  {name:'Mint Green',th:'มินต์เขียว',hex:'#9DC7B0',meaning:'เสริมสุขภาพดี ความสดชื่น และพลังงานบวก 🌿'},
+  {name:'Peach',th:'พีช',hex:'#FFCBA4',meaning:'เสริมความอบอุ่น ความสุข และพลังสร้างสรรค์ 🍑'},
+  {name:'Sky Blue',th:'ฟ้าใส',hex:'#AED6F1',meaning:'เสริมการสื่อสาร โชคลาภ และสิ่งดีๆที่กำลังมา ✨'},
+  {name:'Butter Yellow',th:'เหลืองบัตเตอร์',hex:'#FFF2A8',meaning:'เสริมสติปัญญา ความสว่าง และโอกาสใหม่ 🌟'},
+  {name:'Lilac',th:'ม่วงอ่อน',hex:'#D7B8F3',meaning:'เสริมจินตนาการ ความฝัน และเส้นทางพิเศษ 🌸'},
+  {name:'Sage',th:'เซจเขียวเทา',hex:'#B2C9AD',meaning:'เสริมความมั่นคง สมดุล และพลังแผ่นดิน 🌱'},
+  {name:'Coral',th:'ปะการัง',hex:'#F4A460',meaning:'เสริมความกล้า ความสนุก และพลังงานชีวิต 🌊'},
+  {name:'Powder Blue',th:'ฟ้าแป้ง',hex:'#C5D8E8',meaning:'เสริมความชัดเจน สติ และสายตาที่มองไกล 💎'},
+  {name:'Blush Pink',th:'ชมพูบลัช',hex:'#F2B5C0',meaning:'เสริมความมั่นใจ เสน่ห์ และมิตรภาพที่ดี 🌺'},
+  {name:'Champagne',th:'แชมเปญ',hex:'#F7E7CE',meaning:'เสริมความสำเร็จ ความหรูหรา และผลลัพธ์ที่ดี 🥂'},
+  {name:'Tiffany Blue',th:'ทิฟฟานี่บลู',hex:'#81D8D0',meaning:'เสริมโชคลาภ ความสำเร็จ และของขวัญจากชีวิต 💍'},
+  {name:'Dusty Rose',th:'กุหลาบฝุ่น',hex:'#DCAE9B',meaning:'เสริมความอ่อนโยน ความอบอุ่น และรากฐานที่มั่นคง 🌹'},
+  {name:'Periwinkle',th:'ม่วงฟ้า',hex:'#CCCCFF',meaning:'เสริมความคิดสร้างสรรค์ แรงบันดาลใจ และความฝันใหม่ 🦋'},
+];
+
+const grid=document.getElementById('grid');
+people.forEach((p,i)=>{
+  const ci=i%colors.length;
+  const av=avatarColors[ci];
+  const card=document.createElement('div');
+  card.className='name-card '+colors[ci];
+  card.innerHTML=`<div class="avatar" style="background:${av.bg};color:${av.color}">${p.name.slice(0,2)}</div><div class="name-label">${p.name}</div><div class="name-tag">${p.tag}</div>`;
+  card.onclick=()=>openLetter(i);
+  grid.appendChild(card);
+});
+
+let currentLucky=null;
+function spinColor(){
+  const btn=document.getElementById('spinBtn');
+  btn.classList.add('spinning');
+  setTimeout(()=>btn.classList.remove('spinning'),500);
+  let pool=luckyColors.filter(c=>c!==currentLucky);
+  const picked=pool[Math.floor(Math.random()*pool.length)];
+  currentLucky=picked;
+  const sw=document.getElementById('luckySwatch');
+  const nm=document.getElementById('luckyName');
+  const th=document.getElementById('luckyTh');
+  const mn=document.getElementById('luckyMeaning');
+  const hx=document.getElementById('luckyHex');
+  sw.style.background=picked.hex;
+  nm.textContent=picked.name;
+  nm.style.color=picked.hex==='#FFF2A8'?'#b09a00':picked.hex;
+  th.textContent=picked.th;
+  mn.textContent=picked.meaning;
+  hx.textContent=picked.hex;
+}
+
+function openLetter(i){
+  const p=people[i];
+  const ci=i%colors.length;
+  const av=avatarColors[ci];
+  document.getElementById('heroName').textContent=p.name;
+  document.getElementById('heroTag').textContent=p.tag;
+  const heroAv=document.getElementById('heroAvatar');
+  heroAv.textContent=p.name.slice(0,2);
+  heroAv.style.color=av.color;
+  const hero=document.getElementById('letterHero');
+  hero.style.cssText=`margin:16px 16px 0;border-radius:18px;padding:24px 20px 20px;position:relative;overflow:hidden;${heroBgs[ci]};border:1.5px solid var(--border)`;
+  document.getElementById('heroName').style.color=av.color;
+  document.getElementById('heroTag').style.color=av.color;
+  document.getElementById('letterBody').textContent=p.letter;
+  currentLucky=null;
+  document.getElementById('luckySwatch').style.background='linear-gradient(135deg,#f0e8ff,#ffd6e7)';
+  document.getElementById('luckyName').textContent='กด "สุ่มสี" เลย!';
+  document.getElementById('luckyName').style.color='var(--text-soft)';
+  document.getElementById('luckyTh').textContent='';
+  document.getElementById('luckyMeaning').textContent='✨ กดปุ่มด้านล่างเพื่อดูสีนำโชคของวันนี้';
+  document.getElementById('luckyHex').textContent='';
+  document.getElementById('homePage').style.display='none';
+  document.getElementById('letterPage').style.display='block';
+  window.scrollTo(0,0);
+}
+
+function goHome(){
+  document.getElementById('homePage').style.display='block';
+  document.getElementById('letterPage').style.display='none';
+}
+</script>
